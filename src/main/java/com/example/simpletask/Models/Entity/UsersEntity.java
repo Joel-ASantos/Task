@@ -8,9 +8,9 @@ import java.util.Date;
 public class UsersEntity {
 
     @Id
-    @Column(name = "User_Id")
+    @Column(name = "UserId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String User_Id;
+    private String UserId;
 
     @Column(name = "Name")
     private String Name;

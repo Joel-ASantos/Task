@@ -1,1 +1,7 @@
-services: { }
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: spring-boot-app:latest
+    container_name: TaskSimple

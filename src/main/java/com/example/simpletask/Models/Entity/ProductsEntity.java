@@ -18,12 +18,20 @@ public class ProductsEntity {
     private String Product_Name;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Search_Id",referencedColumnName = "Search_Id")
+    @JoinColumn(name = "Search_Fk",referencedColumnName = "Search_Id")
     private SearchEntity search;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CategoryId",referencedColumnName = "CategoryId")
+    @JoinColumn(name = "CategoryFk",referencedColumnName = "CategoryId")
     private CategoryProduct_Entity Category_Product;
+
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "PricesFk",referencedColumnName = "PricesId")
+    private PricesEntity Prices;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "StorageFk",referencedColumnName = "StorageId")
+    private StorageEntity Storage;
 
     @Timestamp
     @Column(name = "CreatedAt")

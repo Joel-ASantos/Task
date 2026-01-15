@@ -20,7 +20,7 @@ public class CategoryProduct_Entity {
     private String Category_Name;
 
     @OneToMany
-    @JoinColumn(name = "Product_Id",referencedColumnName = "Product_Id")
+    @JoinColumn(name = "ProductFk",referencedColumnName = "Product_Id")
     private List<ProductsEntity> products = new ArrayList<>();
 
     @Timestamp

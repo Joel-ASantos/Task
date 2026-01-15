@@ -15,7 +15,7 @@ public class SearchEntity {
     private String Search_Id;
 
     @ManyToOne
-    @JoinColumn(name = "Users_Id",referencedColumnName = "User_Id")
+    @JoinColumn(name = "UsersFk",referencedColumnName = "UserId")
     private UsersEntity Users;
 
     @Column(name = "SearchTerm")
