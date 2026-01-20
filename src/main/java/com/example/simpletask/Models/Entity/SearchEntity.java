@@ -24,4 +24,37 @@ public class SearchEntity {
     @Timestamp
     @Column(name = "CreatedAt")
     private Date created_at;
+
+    public String getSearch_Id() {
+        return this.Search_Id;
+    }
+
+    public void setSearch_Id(String Search_Id) {
+        this.Search_Id = Search_Id;
+    }
+
+    public UsersEntity getUsers() {
+        return this.Users;
+    }
+
+    public void setUsers(UsersEntity Users) {
+        this.Users = Users;
+    }
+
+    public String getSearchTerm() {
+        return this.SearchTerm;
+    }
+
+    public void setSearchTerm(String SearchTerm) {
+        this.SearchTerm = SearchTerm;
+    }
+
+    public Date getCreated_at() {
+        return this.created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
 }

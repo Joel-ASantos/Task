@@ -28,4 +28,53 @@ public class UsersEntity {
     @Timestamp
     @Column(name = "UpdatedAt")
     private Date updated_at;
+
+    public String getUserId() {
+        return this.UserId;
+    }
+
+    public void setUserId(String UserId) {
+        this.UserId = UserId;
+    }
+
+    public String getName() {
+        return this.Name;
+    }
+
+    public void setName(String Name) {
+        this.Name = Name;
+    }
+
+    public String getEmail() {
+        return this.Email;
+    }
+
+    public void setEmail(String Email) {
+        this.Email = Email;
+    }
+
+    public String getPassword() {
+        return this.Password;
+    }
+
+    public void setPassword(String Password) {
+        this.Password = Password;
+    }
+
+    public Date getCreated_at() {
+        return this.created_at;
+    }
+
+    public void setCreated_at(Date created_at) {
+        this.created_at = created_at;
+    }
+
+    public Date getUpdated_at() {
+        return this.updated_at;
+    }
+
+    public void setUpdated_at(Date updated_at) {
+        this.updated_at = updated_at;
+    }
+
 }

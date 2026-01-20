@@ -5,3 +5,21 @@ services:
       dockerfile: Dockerfile
     image: spring-boot-app:latest
     container_name: TaskSimple
+    env_file:
+      - .env
+    ports:
+      - "${PORT}:${PORT}"
+    depends_on:
+      - simpleTask
+
+  simpleTask:
+    image: postgres:17-alpine
+    container_name: simpleTask
+    environment:
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_NAME: ${DB_NAME}
+    ports:
+      - "${DB_PORT}:${DB_PORT}"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data

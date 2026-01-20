@@ -30,4 +30,45 @@ public class CategoryProduct_Entity {
     @Timestamp
     @Column(name = "UpdatedAt")
     private Date updatedAt;
+
+    public String getCategoryId() {
+        return this.CategoryId;
+    }
+
+    public void setCategoryId(String CategoryId) {
+        this.CategoryId = CategoryId;
+    }
+
+    public String getCategory_Name() {
+        return this.Category_Name;
+    }
+
+    public void setCategory_Name(String Category_Name) {
+        this.Category_Name = Category_Name;
+    }
+
+    public List<ProductsEntity> getProducts() {
+        return this.products;
+    }
+
+    public void setProducts(List<ProductsEntity> products) {
+        this.products = products;
+    }
+
+    public Date getCreatedAt() {
+        return this.createdAt;
+    }
+
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
+    }
+
+    public Date getUpdatedAt() {
+        return this.updatedAt;
+    }
+
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+
 }
