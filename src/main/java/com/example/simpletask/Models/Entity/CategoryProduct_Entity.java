@@ -1,8 +1,6 @@
 package com.example.simpletask.Models.Entity;
 
 import jakarta.persistence.*;
-import jdk.jfr.Timestamp;
-
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -14,28 +12,27 @@ public class CategoryProduct_Entity {
     @Id
     @Column(name = "CategoryId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String CategoryId;
+    private Long CategoryId;
 
     @Column(name = "Category_Name")
     private String Category_Name;
 
-    @OneToMany
-    @JoinColumn(name = "ProductFk",referencedColumnName = "Product_Id")
+    @OneToMany(mappedBy = "Product_Id",cascade = CascadeType.ALL)
     private List<ProductsEntity> products = new ArrayList<>();
 
-    @Timestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CreatedAt")
     private Date createdAt;
 
-    @Timestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "UpdatedAt")
     private Date updatedAt;
 
-    public String getCategoryId() {
+    public Long getCategoryId() {
         return this.CategoryId;
     }
 
-    public void setCategoryId(String CategoryId) {
+    public void setCategoryId(Long CategoryId) {
         this.CategoryId = CategoryId;
     }
 

@@ -1,7 +1,6 @@
 package com.example.simpletask.Models.Entity;
 
 import jakarta.persistence.*;
-import jdk.jfr.Timestamp;
 
 import java.util.Date;
 
@@ -12,24 +11,24 @@ public class PricesEntity {
     @Id
     @Column(name = "PricesId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String PricesId;
+    private Long PricesId;
 
     @Column(name = "Value")
     private Float Value;
 
-    @Timestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CreatedAt")
     private Date created_at;
 
-    @Timestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "UpdatedAt")
     private Date updated_at;
 
-    public String getPricesId() {
+    public Long getPricesId() {
         return this.PricesId;
     }
 
-    public void setPricesId(String PricesId) {
+    public void setPricesId(Long PricesId) {
         this.PricesId = PricesId;
     }
 

@@ -2,24 +2,37 @@ services:
   app:
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: DockerFile
     image: spring-boot-app:latest
     container_name: TaskSimple
-    env_file:
-      - .env
+    restart: always
+
+    environment:
+      SPRING_DATASOURCE_URL: ${HIBERNATE_CONNECTION_URL:-jdbc:postgresql://simpleTask:5432/meu_banco}
+      SPRING_DATASOURCE_USERNAME: ${HIBERNATE_USERNAME:-root}
+      SPRING_DATASOURCE_PASSWORD: ${HIBERNATE_PASSWORD:-java12}
+
     ports:
-      - "${PORT}:${PORT}"
+      - "${PORT:-8080}:8080"
+
     depends_on:
       - simpleTask
 
   simpleTask:
     image: postgres:17-alpine
     container_name: simpleTask
+    restart: always
+
     environment:
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
-      POSTGRES_NAME: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER:-root}
+      POSTGRES_PASSWORD: ${DB_PASSWORD:-java12}
+      POSTGRES_DB: ${DB_NAME:-meu_banco}
+
     ports:
-      - "${DB_PORT}:${DB_PORT}"
+      - "${DB_PORT:-5432}:5432"
+
     volumes:
       - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:

@@ -1,8 +1,6 @@
 package com.example.simpletask.Models.Entity;
 
 import jakarta.persistence.*;
-import jdk.jfr.Timestamp;
-
 import java.util.Date;
 
 @Entity
@@ -12,24 +10,24 @@ public class StorageEntity {
     @Id
     @Column(name = "StorageId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String StorageId;
+    private Long StorageId;
 
     @Column(name = "ProductQuantity")
     private Integer productQuantity;
 
-    @Timestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CreatedAt")
     private Date created_at;
 
-    @Timestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "UpdatedAt")
     private Date updated_at;
 
-    public String getStorageId() {
+    public Long getStorageId() {
         return this.StorageId;
     }
 
-    public void setStorageId(String StorageId) {
+    public void setStorageId(Long StorageId) {
         this.StorageId = StorageId;
     }
 

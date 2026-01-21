@@ -1,6 +1,5 @@
 package com.example.simpletask.Models.Entity;
 import jakarta.persistence.*;
-import jdk.jfr.Timestamp;
 import java.util.Date;
 
 @Entity
@@ -10,7 +9,7 @@ public class UsersEntity {
     @Id
     @Column(name = "UserId")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String UserId;
+    private Long UserId;
 
     @Column(name = "Name")
     private String Name;
@@ -21,19 +20,19 @@ public class UsersEntity {
     @Column(name = "Password")
     private String Password;
 
-    @Timestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "CreatedAt")
     private Date created_at;
 
-    @Timestamp
+    @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "UpdatedAt")
     private Date updated_at;
 
-    public String getUserId() {
+    public Long getUserId() {
         return this.UserId;
     }
 
-    public void setUserId(String UserId) {
+    public void setUserId(Long UserId) {
         this.UserId = UserId;
     }
 
