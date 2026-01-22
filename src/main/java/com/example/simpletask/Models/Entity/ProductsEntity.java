@@ -1,43 +1,41 @@
 package com.example.simpletask.Models.Entity;
 
 import jakarta.persistence.*;
-import java.util.Date;
+import java.time.Instant;
 
 @Entity
 @Table(name = "Products")
 public class ProductsEntity {
 
     @Id
-    @Column(name = "Product_Id")
+    @Column(name = "Product_Id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Product_Id;
 
-    @Column(name = "Product_Name")
+    @Column(name = "Product_Name",nullable = false)
     private String Product_Name;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "Search_Fk",referencedColumnName = "Search_Id")
+    @JoinColumn(name = "Search_Fk",referencedColumnName = "Search_Id",nullable = false)
     private SearchEntity search;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "CategoryFk",referencedColumnName = "CategoryId")
+    @JoinColumn(name = "CategoryFk",referencedColumnName = "CategoryId",nullable = false)
     private CategoryProduct_Entity Category_Product;
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "PricesFk",referencedColumnName = "PricesId")
+    @JoinColumn(name = "PricesFk",referencedColumnName = "PricesId",nullable = false)
     private PricesEntity Prices;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "StorageFk",referencedColumnName = "StorageId")
+    @JoinColumn(name = "StorageFk",referencedColumnName = "StorageId",nullable = false)
     private StorageEntity Storage;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "CreatedAt")
-    private Date created_at;
-
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "UpdatedAt")
-    private Date updated_at;
+    @Column(name = "CreatedAt",nullable = false)
+    private Instant created_at;
+    
+    @Column(name = "UpdatedAt",nullable = true)
+    private Instant updated_at;
 
     public Long getProduct_Id() {
         return this.Product_Id;
@@ -87,19 +85,19 @@ public class ProductsEntity {
         this.Storage = Storage;
     }
 
-    public Date getCreated_at() {
+    public Instant getCreated_at() {
         return this.created_at;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(Instant created_at) {
         this.created_at = created_at;
     }
 
-    public Date getUpdated_at() {
+    public Instant getUpdated_at() {
         return this.updated_at;
     }
 
-    public void setUpdated_at(Date updated_at) {
+    public void setUpdated_at(Instant updated_at) {
         this.updated_at = updated_at;
     }
 

@@ -1,8 +1,9 @@
 package com.example.simpletask.Models.Entity;
 
 import jakarta.persistence.*;
+
+import java.time.Instant;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -10,23 +11,21 @@ import java.util.List;
 public class CategoryProduct_Entity {
 
     @Id
-    @Column(name = "CategoryId")
+    @Column(name = "CategoryId",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long CategoryId;
 
-    @Column(name = "Category_Name")
+    @Column(name = "Category_Name",nullable = false)
     private String Category_Name;
 
     @OneToMany(mappedBy = "Product_Id",cascade = CascadeType.ALL)
     private List<ProductsEntity> products = new ArrayList<>();
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "CreatedAt")
-    private Date createdAt;
+    @Column(name = "CreatedAt",nullable = false)
+    private Instant createdAt;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "UpdatedAt")
-    private Date updatedAt;
+    @Column(name = "UpdatedAt",nullable = true)
+    private Instant updatedAt;
 
     public Long getCategoryId() {
         return this.CategoryId;
@@ -52,19 +51,19 @@ public class CategoryProduct_Entity {
         this.products = products;
     }
 
-    public Date getCreatedAt() {
+    public Instant getCreatedAt() {
         return this.createdAt;
     }
 
-    public void setCreatedAt(Date createdAt) {
+    public void setCreatedAt(Instant createdAt) {
         this.createdAt = createdAt;
     }
 
-    public Date getUpdatedAt() {
+    public Instant getUpdatedAt() {
         return this.updatedAt;
     }
 
-    public void setUpdatedAt(Date updatedAt) {
+    public void setUpdatedAt(Instant updatedAt) {
         this.updatedAt = updatedAt;
     }
 

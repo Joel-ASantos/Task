@@ -1,27 +1,26 @@
 package com.example.simpletask.Models.Entity;
 
+import java.time.Instant;
 import jakarta.persistence.*;
-import java.util.Date;
 
 @Entity
 @Table(name = "Search")
 public class SearchEntity {
 
     @Id
-    @Column(name = "Search_Id")
+    @Column(name = "Search_Id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long Search_Id;
 
     @ManyToOne
-    @JoinColumn(name = "UsersFk",referencedColumnName = "UserId")
+    @JoinColumn(name = "UsersFk",referencedColumnName = "UserId",nullable = false)
     private UsersEntity Users;
 
-    @Column(name = "SearchTerm")
+    @Column(name = "SearchTerm",nullable = false)
     private String SearchTerm;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "CreatedAt")
-    private Date created_at;
+    @Column(name = "CreatedAt",nullable = false)
+    private Instant created_at;
 
     public Long getSearch_Id() {
         return this.Search_Id;
@@ -47,11 +46,11 @@ public class SearchEntity {
         this.SearchTerm = SearchTerm;
     }
 
-    public Date getCreated_at() {
+    public Instant getCreated_at() {
         return this.created_at;
     }
 
-    public void setCreated_at(Date created_at) {
+    public void setCreated_at(Instant created_at) {
         this.created_at = created_at;
     }
 
