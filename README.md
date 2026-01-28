@@ -1,6 +1,6 @@
 # Task
 
-## 📌 Sobre o Projeto
+##  Sobre o Projeto
 
 O **Task** é um projeto pessoal desenvolvido com o objetivo de **estudar
 o funcionamento de aplicações backend utilizando Java com Spring Boot**,
@@ -94,7 +94,7 @@ A aplicação estará disponível em `http://localhost:8080`.
 
 ------------------------------------------------------------------------
 
-## 🔗 Endpoints (Exemplo)
+##  Endpoints (Exemplo)
 
   Método   Endpoint      Descrição
   -------- ------------- ------------------
