@@ -2,35 +2,35 @@ services:
   app:
     build:
       context: .
-      dockerfile: DockerFile
+      dockerfile: Dockerfile
     image: spring-boot-app:latest
-    container_name: TaskSimple
-
     environment:
-      SPRING_DATASOURCE_URL: ${HIBERNATE_CONNECTION_URL:-jdbc:postgresql://simpleTask:5432/meu_banco}
-      SPRING_DATASOURCE_USERNAME: ${HIBERNATE_USERNAME:-root}
-      SPRING_DATASOURCE_PASSWORD: ${HIBERNATE_PASSWORD:-java12}
-
+      SPRING_DATASOURCE_URL: ${HIBERNATE_CONNECTION_URL}
+      SPRING_DATASOURCE_USERNAME: ${HIBERNATE_USERNAME}
+      SPRING_DATASOURCE_PASSWORD: ${HIBERNATE_PASSWORD}
     ports:
-      - "${PORT:-8080}:8080"
-
+      - "8080:8080"
     depends_on:
-      - simpleTask
+      simpleTask:
+        condition: service_healthy
 
   simpleTask:
     image: postgres:17-alpine
-    container_name: simpleTask
-
     environment:
-      POSTGRES_USER: ${DB_USER:-root}
-      POSTGRES_PASSWORD: ${DB_PASSWORD:-java12}
-      POSTGRES_DB: ${DB_NAME:-meu_banco}
-
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_DB: ${DB_NAME}
     ports:
-      - "${DB_PORT:-5432}:5432"
-
+      - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${DB_USER}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    labels:
+      org.springframework.boot.ignore: "true"
 
 volumes:
   postgres_data:

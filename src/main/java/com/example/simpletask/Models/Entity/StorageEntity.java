@@ -15,7 +15,7 @@ public class StorageEntity {
     @Id
     @Column(name = "StorageId",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long StorageId;
+    private Integer StorageId;
 
     @Column(name = "ProductQuantity",nullable = false)
     private Integer productQuantity;

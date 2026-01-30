@@ -15,7 +15,7 @@ public class PricesEntity {
     @Id
     @Column(name = "PricesId",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long PricesId;
+    private Integer PricesId;
 
     @Column(name = "Value",nullable = false)
     private Float Value;

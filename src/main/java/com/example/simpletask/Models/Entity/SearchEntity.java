@@ -14,7 +14,7 @@ public class SearchEntity {
     @Id
     @Column(name = "Search_Id",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long Search_Id;
+    private Integer Search_Id;
 
     @ManyToOne
     @JoinColumn(name = "UsersFk",referencedColumnName = "UserId",nullable = false)

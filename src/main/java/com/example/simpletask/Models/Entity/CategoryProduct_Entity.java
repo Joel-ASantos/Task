@@ -17,7 +17,7 @@ public class CategoryProduct_Entity {
     @Id
     @Column(name = "CategoryId",nullable = false)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long CategoryId;
+    private Integer CategoryId;
 
     @Column(name = "Category_Name",nullable = false)
     private String Category_Name;
