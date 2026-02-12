@@ -2,6 +2,9 @@ package com.example.simpletask.Services;
 
 import com.example.simpletask.Models.Entity.UsersEntity;
 import com.example.simpletask.Models.Repositories.UsersRepository;
+
+import java.util.UUID;
+
 import org.springframework.stereotype.Service;
 
 @Service
@@ -17,8 +20,8 @@ public class UserService {
         return usersRepository.save(usersEntity);
     }
 
-    public UsersEntity GetUserById(Long UserId) {
-        return usersRepository.findById(Math.toIntExact(UserId)).get();
+    public UsersEntity GetUserById(UUID UserId) {
+        return usersRepository.findById(UserId).get();
     }
 
     public UsersEntity UpdateUser(UsersEntity usersEntity,String email,String password) {

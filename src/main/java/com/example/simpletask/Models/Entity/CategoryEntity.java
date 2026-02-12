@@ -10,9 +10,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Produtos")
-public class ProductsEntity {
- 
+@Table(name = "Categoria")
+public class CategoryEntity {
+    
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
@@ -20,15 +20,10 @@ public class ProductsEntity {
     @Column(name = "Name",nullable = false)
     private String Name;
 
-    @Column(name = "Price",nullable = false)
-    private Float Price;
-
-    @Column(name = "Quantity",nullable = false)
-    private Integer Quantity;
-
     @Column(name = "Created_at")
     private Instant Created_at;
 
     @Column(name = "Updated_at")
     private Instant Updated_at;
+
 }

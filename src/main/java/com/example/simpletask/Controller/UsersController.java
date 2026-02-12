@@ -5,6 +5,7 @@ import com.example.simpletask.Models.Repositories.UsersRepository;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("/Usuario")
@@ -21,7 +22,7 @@ public class UsersController {
     }
 
     @GetMapping("get/{id}")
-    public Optional<UsersEntity> ReadUser(@PathVariable Integer id) {
+    public Optional<UsersEntity> ReadUser(@PathVariable UUID id) {
         return usersRepository.findById(id);
     }
 
@@ -31,7 +32,7 @@ public class UsersController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public void DeleteUser(@PathVariable Integer id) {
+    public void DeleteUser(@PathVariable UUID id) {
         usersRepository.deleteById(id);
     }
 }

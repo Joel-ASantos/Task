@@ -5,17 +5,17 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.time.Instant;
+import java.util.UUID;
 
 @Setter
 @Getter
 @Entity
-@Table(name = "Users")
+@Table(name = "Usuarios")
 public class UsersEntity {
 
     @Id
-    @Column(name = "UserId",nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer UserId;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID id;
 
     @Column(name = "Name",nullable = false)
     private String Name;
@@ -26,10 +26,12 @@ public class UsersEntity {
     @Column(name = "Password",nullable = false)
     private String Password;
 
-    @Column(name = "CreatedAt",nullable = false)
-    private Instant created_at;
+    @Column(name = "Phone",nullable = false)
+    private String Phone;
 
-    @Column(name = "UpdatedAt",nullable = true)
-    private Instant updated_at;
+    @Column(name = "Created_at")
+    private Instant Created_at;
 
+    @Column(name = "Updated_at")
+    private Instant Updated_at;
 }

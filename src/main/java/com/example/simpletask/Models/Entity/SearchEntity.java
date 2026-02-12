@@ -1,6 +1,7 @@
 package com.example.simpletask.Models.Entity;
 
 import java.time.Instant;
+import java.util.UUID;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,22 +9,22 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity
-@Table(name = "Search")
+@Table(name = "Pesquisa")
 public class SearchEntity {
 
     @Id
     @Column(name = "Search_Id",nullable = false)
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer Search_Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private UUID Search_Id;
 
     @ManyToOne
-    @JoinColumn(name = "UsersFk",referencedColumnName = "UserId",nullable = false)
+    @JoinColumn(name = "Users_Fk",referencedColumnName = "id",nullable = false)
     private UsersEntity Users;
 
-    @Column(name = "SearchTerm",nullable = false)
+    @Column(name = "SearchTerm")
     private String SearchTerm;
 
-    @Column(name = "CreatedAt",nullable = false)
+    @Column(name = "Created_at")
     private Instant created_at;
 
 }
